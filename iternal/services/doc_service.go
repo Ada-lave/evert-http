@@ -8,18 +8,24 @@ import (
 
 type DocService struct{}
 
-func (DC *DocService) FormatDocument(file multipart.FileHeader, params evert.FormatterParams) error {
+func (DC *DocService) FormatDocument(file multipart.FileHeader, params evert.FormatterParams) ([]byte, error) {
 	openedFile, err := file.Open()
 	if err != nil {
-		return err
+		return []byte{}, err
 	}
 	evertDoc, err := evert.New(openedFile, file.Size)
 
 	if err != nil {
-		return err
+		return []byte{}, err
 	}
 
 	evertFormatter := evert.NewFormatter(evertDoc)
 	evertFormatter.Format(params)
-	return nil
+
+	res, err := evertDoc.GetBytes()
+
+	if err != nil {
+		return []byte{}, err
+	}
+	return res, nil
 }

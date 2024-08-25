@@ -5,7 +5,11 @@ go 1.22.5
 toolchain go1.22.6
 
 require (
-	github.com/Ada-lave/evert-core v0.0.0-20240825072531-0e8aa1551adb // indirect
+	github.com/Ada-lave/evert-core v0.0.0-20240825072531-0e8aa1551adb
+	github.com/gin-gonic/gin v1.10.0
+)
+
+require (
 	github.com/bytedance/sonic v1.11.6 // indirect
 	github.com/bytedance/sonic/loader v0.1.1 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
@@ -14,7 +18,6 @@ require (
 	github.com/fumiama/imgsz v0.0.4 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.10.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.20.0 // indirect
