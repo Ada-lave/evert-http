@@ -2,11 +2,14 @@ package http_evert
 
 import (
 	"mime/multipart"
-
-	"github.com/Ada-lave/evert-core"
 )
+
+type FileParams struct {
+	AddSpacesBeetweenImageText bool `form:"add_spaces_beetween_image_text" binding:"required"`
+	FormatImageDescription bool `form:"format_image_description" binding:"required"`
+}
 
 type DocRequest struct {
 	File *multipart.FileHeader `form:"file" binding:"required"`
-	Params evert.FormatterParams `json:"params" binding:"required"`
+	FileParams 
 }
