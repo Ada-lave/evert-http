@@ -4,4 +4,4 @@ COPY . .
 
 RUN go build ./cmd/evert-http
 
-CMD ./main
+CMD ./evert-http
