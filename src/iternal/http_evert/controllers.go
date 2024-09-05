@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/Ada-lave/evert-core"
-	"github.com/Ada-lave/evert-http/iternal/services"
+	"github.com/Ada-lave/evert-http/src/iternal/services"
 	"github.com/gin-gonic/gin"
 )
 
