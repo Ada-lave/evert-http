@@ -14,14 +14,20 @@ type DocController struct{
 
 func (DC *DocController) FormatDoc(c *gin.Context) {
 	var request DocRequest
+	var fileParams FileParams
 	if err := c.Bind(&request); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
 		return
 	}
 
+	if err := c.Bind(&fileParams); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+		return
+	}
+
 	params := evert.FormatterParams{
-		AddSpacesBeetweenImageText: request.AddSpacesBeetweenImageText,
-		FormatImagDescription: request.FormatImageDescription,
+		AddSpacesBeetweenImageText: fileParams.AddSpacesBeetweenImageText,
+		FormatImagDescription: fileParams.FormatImageDescription,
 	}
 	file, err := DC.service.FormatDocument(*request.File, params)
 
@@ -34,7 +40,7 @@ func (DC *DocController) FormatDoc(c *gin.Context) {
 	c.Header("Content-Description", "File Transfer")
     c.Header("Content-Transfer-Encoding", "binary")
     c.Header("Content-Disposition", "attachment; filename="+request.File.Filename)
-    c.Header("Content-Type", "application/octet-stream")
+    c.Header("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
 
 	c.File(file)
 }
