@@ -24,6 +24,7 @@ func setupEngine() *gin.Engine {
 func CORSMiddleware() gin.HandlerFunc {
     return func(c *gin.Context) {
 
+		c.Header("client_max_body_size size", "50M")
         c.Header("Access-Control-Allow-Origin", "*")
         c.Header("Access-Control-Allow-Credentials", "true")
         c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
